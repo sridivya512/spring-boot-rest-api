@@ -3,6 +3,7 @@ package com.divya.rest_demo.controller;
 import com.divya.rest_demo.model.CloudVendor;
 import com.divya.rest_demo.response.ResponseHandler;
 import com.divya.rest_demo.service.CloudVendorService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,8 @@ public class CloudVendorController {
     }
 
     @GetMapping("/{vendorId}")
+    @Operation(summary = "Cloud vendor details",
+            description = "Provide cloud vendor details based on the vendor ID")
     public ResponseEntity<Object> getCloudVendorDetails(@PathVariable("vendorId") String vendorId){
         return ResponseHandler.responseBuilder(
                 "Requested Vendor details are given here",
