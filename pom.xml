@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.divya</groupId>
-	<artifactId>rest-demo</artifactId>
+	<artifactId>cloud-vendor-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>rest-demo</name>
 	<description>Demo project for Spring Boot</description>

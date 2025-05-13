@@ -22,14 +22,14 @@ public class CloudVendorRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        cloudVendor = new CloudVendor("1","Amazon","USA","xxxxx");
+        cloudVendor = new CloudVendor(1,"Amazon","USA","xxxxx");
         cloudVendorRepository.save(cloudVendor);
     }
 
     @AfterEach
     void tearDown() {
         cloudVendor = null;
-        cloudVendorRepository.deleteAll();;
+        cloudVendorRepository.deleteAll();
     }
 
     // Test case SUCCESS

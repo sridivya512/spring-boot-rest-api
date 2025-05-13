@@ -2,7 +2,6 @@ package com.divya.rest_demo.controller;
 
 import com.divya.rest_demo.model.CloudVendor;
 import com.divya.rest_demo.service.CloudVendorService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,8 +35,8 @@ class CloudVendorControllerTest {
 
     @BeforeEach
     void setUp() {
-        cloudVendor1 = new CloudVendor("1","Amazon","USA","xxxxx");
-        cloudVendor2 = new CloudVendor("2","GCP","UK","yyyyy");
+        cloudVendor1 = new CloudVendor(1,"Amazon","USA","xxxxx");
+        cloudVendor2 = new CloudVendor(2,"GCP","UK","yyyyy");
         cloudVendorList.add(cloudVendor1);
         cloudVendorList.add(cloudVendor2);
     }

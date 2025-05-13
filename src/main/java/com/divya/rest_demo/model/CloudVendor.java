@@ -3,6 +3,7 @@ package com.divya.rest_demo.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -12,7 +13,8 @@ import jakarta.persistence.Table;
 public class CloudVendor {
     @Id
     @Schema(description = "This is cloud vendor Id. It must be unique.")
-    private String vendorId;
+    @GeneratedValue
+    private int vendorId;
     private String vendorName;
     private String vendorAddress;
     private String vendorPhoneNumber;
@@ -20,18 +22,24 @@ public class CloudVendor {
     public CloudVendor() {
     }
 
-    public CloudVendor(String vendorId, String vendorName, String vendorAddress, String vendorPhoneNumber) {
+    public CloudVendor(int vendorId, String vendorName, String vendorAddress, String vendorPhoneNumber) {
         this.vendorId = vendorId;
         this.vendorName = vendorName;
         this.vendorAddress = vendorAddress;
         this.vendorPhoneNumber = vendorPhoneNumber;
     }
 
-    public String getVendorId() {
+    public CloudVendor(String vendorName, String vendorAddress, String vendorPhoneNumber) {
+        this.vendorName = vendorName;
+        this.vendorAddress = vendorAddress;
+        this.vendorPhoneNumber = vendorPhoneNumber;
+    }
+
+    public int getVendorId() {
         return vendorId;
     }
 
-    public void setVendorId(String vendorId) {
+    public void setVendorId(int vendorId) {
         this.vendorId = vendorId;
     }
 

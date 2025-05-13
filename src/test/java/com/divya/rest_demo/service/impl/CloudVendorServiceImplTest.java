@@ -31,7 +31,7 @@ class CloudVendorServiceImplTest {
     void setUp() {
         autoCloseable = MockitoAnnotations.openMocks(this);
         cloudVendorService = new CloudVendorServiceImpl(cloudVendorRepository);
-        cloudVendor = new CloudVendor("1","Amazon","USA","xxxxx");
+        cloudVendor = new CloudVendor(1,"Amazon","USA","xxxxx");
     }
 
     @AfterEach
@@ -92,7 +92,7 @@ class CloudVendorServiceImplTest {
     void testGetCloudVendorByName_success() {
         when(cloudVendorRepository.findByVendorName("Amazon")).
                 thenReturn(new ArrayList<CloudVendor>(Collections.singletonList(cloudVendor)));
-        String result_vendorId = cloudVendorService.getCloudVendorByName("Amazon").get(0).getVendorId();
+        int result_vendorId = cloudVendorService.getCloudVendorByName("Amazon").get(0).getVendorId();
         assertEquals(result_vendorId,cloudVendor.getVendorId());
         verify(cloudVendorRepository,times(1)).findByVendorName("Amazon");
     }

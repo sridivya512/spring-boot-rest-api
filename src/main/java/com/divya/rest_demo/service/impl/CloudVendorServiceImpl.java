@@ -4,6 +4,9 @@ import com.divya.rest_demo.exception.CloudVendorNotFoundException;
 import com.divya.rest_demo.model.CloudVendor;
 import com.divya.rest_demo.repository.CloudVendorRepository;
 import com.divya.rest_demo.service.CloudVendorService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -54,5 +57,36 @@ public class CloudVendorServiceImpl implements CloudVendorService {
     public List<CloudVendor> getCloudVendorByName(String cloudVendorName) {
         return cloudVendorRepository.findByVendorName(cloudVendorName);
     }
+
+    @Override
+    public List<CloudVendor> getAllCloudVendorsWithSorting(String field) {
+        System.out.println("field:"+field);
+        return cloudVendorRepository.findAll(Sort.by(Sort.Direction.DESC,field));
+    }
+
+    @Override
+    public Page<CloudVendor> getAllCloudVendorsWithPagination(int offset, int pageSize) {
+        return cloudVendorRepository.findAll(PageRequest.of(offset,pageSize));
+    }
+
+    @Override
+    public Page<CloudVendor> getAllCloudVendorsWithPaginationAndSorting(int offset, int pageSize, String field) {
+        return cloudVendorRepository.findAll(PageRequest.of(offset,pageSize).withSort(Sort.by(field)));
+    }
+
+
+//    @PostConstruct
+//    public void initDB() {
+//        List<CloudVendor> cloudVendorList = IntStream.rangeClosed(1, 200)
+//                .mapToObj(i -> new CloudVendor(
+//                        "Vendor-" + i,
+//                        "Address-" + new Random().nextInt(100),
+//                        "Phone-" + (1000000000 + new Random().nextInt(900000000))
+//                ))
+//                .collect(Collectors.toList());
+//
+//        cloudVendorRepository.saveAll(cloudVendorList);
+//    }
+
 
 }
